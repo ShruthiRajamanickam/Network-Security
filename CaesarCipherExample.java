@@ -1,77 +1,39 @@
-import java.util.Scanner;   
-   
-// create class CaesarCipherExample for encryption and decryption    
+import java.util.Scanner;  
 public class CaesarCipherExample   
-{   
-    // ALPHABET string denotes alphabet from a-z   
-    public static final String ALPHABET = "abcdefghijklmnopqrstuvwxyz";   
-      
-    // create encryptData() method for encrypting user input string with given shift key   
+{ 
+    public static final String ALPHABET = "abcdefghijklmnopqrstuvwxyz"; 
     public static String encryptData(String inputStr, int shiftKey)   
-    {   
-        // convert inputStr into lower case   
-        inputStr = inputStr.toLowerCase();   
-          
-        // encryptStr to store encrypted data   
-        String encryptStr = "";   
-          
-        // use for loop for traversing each character of the input string   
+    {
+        inputStr = inputStr.toLowerCase();     
+        String encryptStr = "";  
         for (int i = 0; i < inputStr.length(); i++)   
-        {   
-            // get position of each character of inputStr in ALPHABET   
-            int pos = ALPHABET.indexOf(inputStr.charAt(i));   
-              
-            // get encrypted char for each char of inputStr   
+        {    
+            int pos = ALPHABET.indexOf(inputStr.charAt(i)); 
             int encryptPos = (shiftKey + pos) % 26;   
-            char encryptChar = ALPHABET.charAt(encryptPos);   
-              
-            // add encrypted char to encrypted string   
+            char encryptChar = ALPHABET.charAt(encryptPos);
             encryptStr += encryptChar;   
-        }   
-          
-        // return encrypted string   
+        }    
         return encryptStr;   
-    }   
-      
-    // create decryptData() method for decrypting user input string with given shift key   
+    } 
     public static String decryptData(String inputStr, int shiftKey)   
     {   
-        // convert inputStr into lower case   
-        inputStr = inputStr.toLowerCase();   
-          
-        // decryptStr to store decrypted data   
-        String decryptStr = "";   
-          
-        // use for loop for traversing each character of the input string   
+        inputStr = inputStr.toLowerCase(); 
+        String decryptStr = ""; 
         for (int i = 0; i < inputStr.length(); i++)   
-        {   
-              
-            // get position of each character of inputStr in ALPHABET   
-            int pos = ALPHABET.indexOf(inputStr.charAt(i));   
-              
-            // get decrypted char for each char of inputStr   
-            int decryptPos = (pos - shiftKey) % 26;   
-              
-            // if decryptPos is negative   
+        {  
+            int pos = ALPHABET.indexOf(inputStr.charAt(i));  
+            int decryptPos = (pos - shiftKey) % 26;
             if (decryptPos < 0){   
                 decryptPos = ALPHABET.length() + decryptPos;   
             }   
-            char decryptChar = ALPHABET.charAt(decryptPos);   
-              
-            // add decrypted char to decrypted string   
+            char decryptChar = ALPHABET.charAt(decryptPos);  
             decryptStr += decryptChar;   
-        }   
-        // return decrypted string   
+        }
         return decryptStr;   
-    }   
-      
-    // main() method start   
+    }
     public static void main(String[] args)   
     {   
-        // create an instance of Scanner class   
-        Scanner sc = new Scanner(System.in);   
-          
-        // take input from the user   
+        Scanner sc = new Scanner(System.in); 
         System.out.println("Enter a string for encryption using Caesar Cipher: ");   
         String inputStr = sc.nextLine();   
           
@@ -79,9 +41,7 @@ public class CaesarCipherExample
         int shiftKey = Integer.valueOf(sc.nextLine());   
           
         System.out.println("Encrypted Data ===> "+encryptData(inputStr, shiftKey));   
-        System.out.println("Decrypted Data ===> "+decryptData(encryptData(inputStr, shiftKey), shiftKey));   
-          
-        // close Scanner class object   
+        System.out.println("Decrypted Data ===> "+decryptData(encryptData(inputStr, shiftKey), shiftKey));
         sc.close();   
     }   
 }   
